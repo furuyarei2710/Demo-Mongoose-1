@@ -6,79 +6,18 @@ import clientPromise from '../../../config/dbConnect';
 import { putUser } from '../../../controller/controller';
 import User from '../../../models/User';
 import mongoose from '../../../utils/mongoose'
+import main from '../../../config/dbConnect';
 
-export default async function createUser(req, res) {
-	// event.preventDefault();
-	console.log(req.body)
-  const { email, firstName, lastName, gender } = req.body;
-	const obj = {
-		email, firstName, lastName, gender
-	}
-	console.log(obj)
-  const { method } = req;
-  // await dbConnect();
-  switch (method) {
-  	case "GET":
-      try {
-        const client = await clientPromise;
-				const db = client.db("users");
-		
-				const users = await db.collection("users").find({}).toArray();
-				res.json(users);
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    case "POST":
-      try {
-				const client = await clientPromise;
-        const db = client.db("users");
-        const { firstName, lastName, email, password, gender } = req.body;
+main ();
 
-        const user = await db.collection("users").insert ({
-          firstName,
-          lastName,
-          email,
-          password,
-          gender,
-        });
-        res.json(user);
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-		case "PUT":
-      putUser(req, res);
-    default:
-      res.status(400).json({ success: false });
-      break;
-  }
-}
-
-const updateUser = async(userId) => {
-  try {
-    await fetch('/api/')
+export default async function handler (req, res)  {
+  try{
+    const user = await User.create(req.body);
+    res.redirect('/');
+    if(!user){
+      return res.json({code: 'User not created'});
+    }
   } catch (error) {
-    
+    res.status(400).json({status: 'Not able to create user'});
   }
-  // try{
-  //   const client = await clientPromise;
-  //   const db = client.db("users");
-  //   const { firstName, lastName, email, password, gender } = req.body;
-
-  //   const user = await db.collection("users").updateOne({
-  //     _id: new ObjectId(req.body)
-  //   }, {
-  //     $set: {
-  //       published: true 
-  //     } 
-  //   }) 
-
-  //   return res.json({
-  //     message: "Post Updated Successfully",
-  //     success: true
-  //   })
-  // }catch(error){
-  //   res.status(400).json({ success: false });
-  // }
 }
