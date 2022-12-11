@@ -26,10 +26,14 @@
       "static/chunks/pages/_error.js"
     ],
     "/user/[userID]": [
-    "/register": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/user/[userID].js"
+    ],
+    "/usersInfo": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usersInfo.js"
     ]
   },
   "ampFirstPages": []
