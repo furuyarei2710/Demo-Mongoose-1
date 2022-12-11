@@ -10,6 +10,10 @@ const User = ( { users }) => {
   const [firstName, setFirstName] = useState(specificUser.firstName);
   const [lastName, setLastname] = useState(specificUser.lastName);
   const [gender, setGender] = useState(specificUser.gender);
+  const mongoose = require('mongoose');
+  const axios = require("axios");
+  const db = mongoose.connection;
+
   useEffect(() => {
     if (!router.isReady) return;
   }, [router.isReady]);
@@ -89,4 +93,16 @@ export async function getServerSideProps(){
 }
 
 export default User;
+
+// connect to the database
+
+mongoose.connect(`mongodb+srv://${user}:${password}@${URL}`, {useNewUrlParser: true }, function (err) {
+ 
+   if (err) throw err;
+
+   console.log('Successfully connected');
+ 
+});
+
+// update user
 
