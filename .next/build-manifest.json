@@ -29,6 +29,12 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/register.js"
+    ],
+    "/user/[userID]": [
+    "/register": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/user/[userID].js"
     ]
   },
   "ampFirstPages": []
