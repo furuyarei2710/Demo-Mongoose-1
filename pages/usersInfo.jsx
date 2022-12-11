@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
-import api from '../services/api';
 
 export default function UsersInfo({ users }) {
 	const [isEditing, setIsEditing] = useState(false);
 	useEffect(() => {
 		// api.get("/user")
 	})
+  const handleOnEditing = () => {
+    
+  }
   return (
     <>
       <table>
@@ -28,7 +30,7 @@ export default function UsersInfo({ users }) {
 							<td>{user.password}</td>
 							<td>{user.gender}</td>
 							<td>
-								<Link href={"/editUsers"}>
+								<Link href={`/user/${user._id}`}>
 									<button>Edit</button>
 								</Link>
 							</td>

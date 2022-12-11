@@ -1,16 +1,23 @@
-import Users from "../models/User";
-export async function putUser(req, res) {
-	const { method } = req;
-	const { ClientId } = req.query;
+// import Users from "../models/User";
+// import clientPromise from '../../../config/dbConnect';
 
-  try {
-    const formData = req.body;
+// export async function putUser(req, res) {
+//   const { method } = req;
+//   const { ClientId } = req.query;
 
-    if (!formData) throw new Error("Invalid data");
-
-		await Users.updateOne({ _id: ClientId, formData});
-		res.status(200).json({success: true, data: formData})
-  } catch (error) {
-    res.status(400).json({ success: false });
-  }
-}
+//   try {
+//     const client = await clientPromise;
+//     const db = client.db("users");
+//     const { firstName, lastName, email, password, gender } = req.body;
+//     const id = req.params;
+//     const user = await db
+//       .collection("users")
+//       .updateOne(
+//         { _id: id },
+//         { $set: { firstName, lastName, email, password, gender } }
+//       );
+//     res.json(user);
+//   } catch (error) {
+//     res.status(400).json({ success: false });
+//   }
+// }
