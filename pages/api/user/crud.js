@@ -6,7 +6,6 @@ import clientPromise from "../../../config/dbConnect";
 import { putUser } from "../../../controller/controller";
 import User from "../../../models/User";
 import mongoose from "../../../utils/mongoose";
-import { editUser } from "./[id]";
 
 export default async function createUser(req, res) {
   const {
