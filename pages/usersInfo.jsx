@@ -50,7 +50,7 @@ export async function getServerSideProps() {
     console.log(users)
     return {
       props: {
-        users
+        users: JSON.parse(JSON.stringify(users))
       },
     };
   } catch (error) {

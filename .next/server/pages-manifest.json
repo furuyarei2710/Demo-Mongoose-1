@@ -3,6 +3,5 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/usersInfo": "pages/usersInfo.js",
-  "/api/user/crud": "pages/api/user/crud.js",
-  "/user/[userID]": "pages/user/[userID].js"
+  "/api/user/crud": "pages/api/user/crud.js"
 }
