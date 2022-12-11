@@ -3,12 +3,11 @@ import { useEffect, useState } from 'react';
 
 export default function UsersInfo({ users }) {
 	const [isEditing, setIsEditing] = useState(false);
+  const usersInfo = JSON.parse(JSON.stringify(users));
+  console.log(usersInfo)
 	useEffect(() => {
 		// api.get("/user")
 	})
-  const handleOnEditing = () => {
-    
-  }
   return (
     <>
       <table>
@@ -48,9 +47,10 @@ export async function getServerSideProps() {
   try {
     let response = await fetch("http://localhost:3000/api/user/crud");
     let users = await response.json();
+    console.log(users)
     return {
       props: {
-        users: JSON.parse(JSON.stringify(users)),
+        users
       },
     };
   } catch (error) {
