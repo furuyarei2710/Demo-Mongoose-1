@@ -25,10 +25,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/register": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/register.js"
+    ],
     "/user/[userID]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/user/[userID].js"
+    ],
+    "/usersInfo": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/usersInfo.js"
     ]
   },
   "ampFirstPages": []
