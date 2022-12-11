@@ -21,7 +21,7 @@ export default function UsersInfo({ users }) {
           </tr>
         </thead>
         <tbody>
-          {/* {users.map(user => (
+          {users.map(user => (
 						<tr key={user._id}>							
 							<td>{user.firstName}</td>
 							<td>{user.lastName}</td>
@@ -35,8 +35,8 @@ export default function UsersInfo({ users }) {
 							</td>
 							<td><button>Delete</button></td>
           </tr>
-					))} */}
-          <p>{JSON.stringify(users)}</p>
+					))}
+          {/* <p>{JSON.stringify(users)}</p> */}
           <tr></tr>
         </tbody>
       </table>

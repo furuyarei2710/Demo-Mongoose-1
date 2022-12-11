@@ -55,7 +55,11 @@ export default async function createUser(req, res) {
       break;
     case "PUT" /* Edit a model by its ID */:
       try {
-    
+        const client = await clientPromise;
+        const db = client.db("users");
+        const newUser = req.body;
+        const updatedUser = await db.collection("users").replaceOne({_id: id, newUser})
+        res.json(updatedUser)
         
       } catch (error) {
         res.status(400).json({ success: false });
