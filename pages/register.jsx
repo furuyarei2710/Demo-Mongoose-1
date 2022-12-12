@@ -11,7 +11,7 @@ export default function Register(){
     return (
         <div className="auth-form-container">
             <h2>Sign up</h2>
-        <form action="/api/user/crud" method="POST" className="register-form">
+        <form action="/api/user" method="POST" className="register-form">
             <label htmlFor="firstname"> First name</label>
             <input value={firstname} onChange={(e) => setfirstName(e.target.value)} type =" firstname" name="firstName" id="firstname" placeholder="first Name" />
             <label htmlFor="lastname"> Last name</label>

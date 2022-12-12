@@ -46,7 +46,7 @@ export default function UsersInfo({ users }) {
 
 export async function getServerSideProps() {
   try {
-    let response = await fetch("http://localhost:3000/api/user/crud");
+    let response = await fetch("http://localhost:3000/api/user");
     let users = await response.json();
     
     return {

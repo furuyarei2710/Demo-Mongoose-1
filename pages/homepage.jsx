@@ -6,7 +6,7 @@ import { MdFormatColorFill } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
 import Router, { useRouter } from "next/router";
 
-export default function Workspace({ workspaces }) {
+export default function NavigationBar({ workspaces }) {
   const [isCreateWorkspace, setIsCreateWorkspace] = useState(false);
   const [workspaceInfo, setWorkspaceInfo] = useState({ name: "", color: "" });
   const [backgroundOfWorkspace, setBackgroundOfWorkspace] = useState();
@@ -26,13 +26,16 @@ export default function Workspace({ workspaces }) {
     setIsCreateWorkspace(!isCreateWorkspace);
   }
 
+  const handleSubmit = event => {
+    window.location.replace("/homepage");
+  }
+
   return (
     <header>
       <nav>
         <Link href={"#"}>Home</Link>
         <Link href={"#"}>Dashboard</Link>
         <Link href={"#"}>Workspaces</Link>
-
         <ul>
           {workspaces.map((workspace) => (
             <li key={workspace._id}>
@@ -46,7 +49,7 @@ export default function Workspace({ workspaces }) {
           <AiOutlinePlus />
         </button>
         {isCreateWorkspace && (
-          <form action="/api/workspace/create" method="POST"> 
+          <form action="/api/workspace" method="POST" onSubmit={handleSubmit}> 
             <label htmlFor={"name"}>Name of workspace:</label>
             <input
               type={"text"}
@@ -72,9 +75,7 @@ export default function Workspace({ workspaces }) {
               onChange={handlePreviewBackground}
               name={"url"}
             />
-    
-              <input type={"submit"} value={"Create New Workspace"} />
-              {/* <button type={"submit"} onClick={}>Create</button> */}
+            <input type={"submit"} value={"Create New Workspace"} />
           </form>
         )}
         {backgroundOfWorkspace && (
@@ -89,14 +90,14 @@ export default function Workspace({ workspaces }) {
   );
 }
 
-
 export async function getServerSideProps() {
   try {
-    let response = await fetch("http://localhost:3000/api/workspace/create");
+    let response = await fetch("http://localhost:3000/api/workspace/");
     let workspaces = await response.json();
+    
     return {
       props: {
-        workspaces
+        workspaces: JSON.parse(JSON.stringify(workspaces))
       },
     };
   } catch (error) {
