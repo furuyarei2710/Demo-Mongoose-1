@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { MdFormatColorFill } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useRouter } from "next/router";
-import { redirect } from "next/dist/server/api-utils";
+import { CreateWorkspaceButton, WorkspaceLinkStyled, WorkspaceLogoStyled, WorkspaceNameStyled } from "../assets/css/components/WorkspaceOnNavBar";
 
-export default function Header() {
+export default function NavigationBar() {
   const [isCreateWorkspace, setIsCreateWorkspace] = useState(false);
   const [workspaceInfo, setWorkspaceInfo] = useState({ name: "", color: "" });
   const [backgroundOfWorkspace, setBackgroundOfWorkspace] = useState();
@@ -45,25 +45,48 @@ export default function Header() {
     setBackgroundOfWorkspace(file);
   };
   const handleShowCreateWorkspaceForm = () => {
-    setIsCreateWorkspace(true);
+    setIsCreateWorkspace(!isCreateWorkspace);
   };
 
   return (
     <>
       <header>
+        <div className="navigationBar">
+          <ul className="navBarList">
+            <li className="navBarItem">
+              <div className="logo">
+              
+              </div>
+            </li>
+            <li className="navBarItem">
+              <Link className="navBarItem" href={"#"}>
+                Home
+              </Link>
+            </li>
+            <li className="navBarItem">
+              <Link className="navBarItem" href={"#"}>
+                Dashboard
+              </Link>
+            </li>
+            <li className="navBarItem">
+              <Link className="navBarItem" href={"#"}>
+                Workspaces
+              </Link>
+            </li>
+            {workspaces.map((workspace) => (
+              <li className="navBarItem">
+                <WorkspaceLinkStyled className="workspace-link" key={workspace._id} href="#">
+                  <WorkspaceLogoStyled className="workspace-logo" style={{backgroundColor: `${workspace.color}`}}></WorkspaceLogoStyled>
+                    <WorkspaceNameStyled className="workspace-name">{workspace.name}</WorkspaceNameStyled>
+                </WorkspaceLinkStyled>
+              </li>
+            ))}
+          </ul>
+        </div>
         <nav>
-          <Link href={"#"}>Home</Link>
-          <Link href={"#"}>Dashboard</Link>
-          <Link href={"#"}>Workspaces</Link>
-
-          {workspaces.map((workspace) => (
-            <Link key={workspace._id} href="#">
-              {workspace.name}
-            </Link>
-          ))}
-          <button onClick={handleShowCreateWorkspaceForm}>
+          <CreateWorkspaceButton handleOnClick={handleShowCreateWorkspaceForm} className={'create-workspace-btn'}>
             <AiOutlinePlus />
-          </button>
+          </CreateWorkspaceButton>
           {isCreateWorkspace && (
             <form action="/api/workspace" method="POST">
               <label for={"name"}>Name of workspace:</label>
@@ -91,7 +114,9 @@ export default function Header() {
                 onChange={handlePreviewBackground}
                 name={"url"}
               />
-              <button onClick={() => router.push('/')} type={"submit"}>Create</button>
+              <button onClick={() => router.push("/")} type={"submit"}>
+                Create
+              </button>
             </form>
           )}
           {backgroundOfWorkspace && (
@@ -104,6 +129,5 @@ export default function Header() {
         </nav>
       </header>
     </>
-
   );
 }

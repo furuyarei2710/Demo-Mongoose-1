@@ -2,12 +2,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react';
 
 export default function UsersInfo({ users }) {
-	const [isEditing, setIsEditing] = useState(false);
-  const usersInfo = JSON.parse(JSON.stringify(users));
-  console.log(usersInfo)
-	useEffect(() => {
-		// api.get("/user")
-	})
   return (
     <>
       <table>

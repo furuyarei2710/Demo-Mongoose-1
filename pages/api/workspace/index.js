@@ -5,7 +5,6 @@ export default async function createWorkspace(req, res) {
     query: { id },
   } = req
   const { method } = req;
-  // await dbConnect();
   switch (method) {
     case "GET":
       try {
