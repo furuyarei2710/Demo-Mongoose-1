@@ -10,16 +10,18 @@
 /coverage
 
 # next.js
-# /.next/
+/.next/
 /out/
 
 # production
 /build
 
-output: {
-    hotUpdateChunkFilename: 'hot/hot-update.js',
-    hotUpdateMainFilename: 'hot/hot-update.json'
-},
+/next 
+
+# output: {
+#     hotUpdateChunkFilename: 'hot/hot-update.js',
+#     hotUpdateMainFilename: 'hot/hot-update.json'
+# },
 
 
 # misc
