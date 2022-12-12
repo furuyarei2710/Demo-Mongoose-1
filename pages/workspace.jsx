@@ -96,7 +96,7 @@ export async function getServerSideProps() {
     let workspaces = await response.json();
     return {
       props: {
-        workspaces: JSON.parse(JSON.stringify(workspaces)),
+        workspaces
       },
     };
   } catch (error) {
