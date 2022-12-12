@@ -5,11 +5,12 @@ import { useEffect, useState } from "react";
 import { MdFormatColorFill } from "react-icons/md";
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useRouter } from "next/router";
-import Header from "../src/components/layouts/Header";
+import Header from "../src/components/Header";
 import { BrowserRouter, Routes } from "react-router-dom";
+import NavigationBar from "../src/components/Header";
 
 export default function Home({workspaces}) {
-  return <><Header /></>
+  return <><NavigationBar /></>
 }
 
 export async function getServerSideProps() {
