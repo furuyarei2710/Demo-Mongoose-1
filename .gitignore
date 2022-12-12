@@ -5,23 +5,24 @@
 /.pnp
 .pnp.js
 .index.tsx
-
 # testing
 /coverage
 
 # next.js
-# /.next/
+/.next/
+.next/build-manifest.json
 /out/
 
 # production
 /build
 
-hot/
-
-
 # misc
 .DS_Store
 *.pem
+
+.hot-update.js
+/next/build-manifest.json
+.trace.
 
 # debug
 npm-debug.log*
