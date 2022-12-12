@@ -2,8 +2,8 @@
 
 // import connectMongo from "../../../config/dbConnect";
 
-import clientPromise from "../../../config/dbConnect";
-import { putUser } from "../../../controller/controller";
+import clientPromise from "../../../database/dbConnect";
+import { putUser } from "../../../database/controller";
 import User from "../../../models/User";
 import mongoose from "../../../utils/mongoose";
 
