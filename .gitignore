@@ -16,7 +16,10 @@
 # production
 /build
 
-hot/
+output: {
+    hotUpdateChunkFilename: 'hot/hot-update.js',
+    hotUpdateMainFilename: 'hot/hot-update.json'
+},
 
 
 # misc
