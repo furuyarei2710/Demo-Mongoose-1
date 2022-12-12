@@ -5,12 +5,12 @@
 /.pnp
 .pnp.js
 .index.tsx
-
 # testing
 /coverage
 
 # next.js
-# /.next/
+/.next/
+.next/build-manifest.json
 /out/
 
 # production
@@ -21,8 +21,8 @@
 *.pem
 
 .hot-update.js
-.build-manifest.json
-.trace
+/next/build-manifest.json
+.trace.
 
 # debug
 npm-debug.log*
@@ -39,4 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.next
