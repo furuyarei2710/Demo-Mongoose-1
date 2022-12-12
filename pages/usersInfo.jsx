@@ -36,6 +36,7 @@ export default function UsersInfo({ users }) {
 							<td><button>Delete</button></td>
           </tr>
 					))}
+          {/* <p>{JSON.stringify(users)}</p> */}
           <tr></tr>
         </tbody>
       </table>
@@ -47,10 +48,10 @@ export async function getServerSideProps() {
   try {
     let response = await fetch("http://localhost:3000/api/user/crud");
     let users = await response.json();
-    console.log(users)
+    
     return {
       props: {
-        users
+        users: JSON.parse(JSON.stringify(users))
       },
     };
   } catch (error) {
