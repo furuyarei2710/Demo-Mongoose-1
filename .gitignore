@@ -10,13 +10,24 @@
 /coverage
 
 # next.js
+/.next/build-manifest.json
+/.next/cache/webpack/client-development/11.pack
+/.next/cache/webpack/client-development/2.pack
+/.next/cache/webpack/client-development/8.pack
+/.next/cache/webpack/client-development/index.pack
+/.next/cache/webpack/client-development/index.pack.old
+/.next/server/middleware-build-manifest.js
+/.next/server/pages-manifest.json
+/.next/static/chunks/webpack.js
+/.next/static/development/_buildManifest.js
+/.next/trace
 /.next/
 /out/
 
 # production
 /build
 
-/next 
+# /next 
 
 # output: {
 #     hotUpdateChunkFilename: 'hot/hot-update.js',
