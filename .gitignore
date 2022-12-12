@@ -22,6 +22,7 @@
 
 .hot-update.js
 .build-manifest.json
+.trace
 
 # debug
 npm-debug.log*
