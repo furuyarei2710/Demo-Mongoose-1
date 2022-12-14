@@ -11,25 +11,25 @@ export default function Register() {
     <div className="auth-form-container">
       <h2>Sign up</h2>
       <form action="/api/user" method="POST" className="register-form">
-        <label htmlFor="firstname"> First name</label>
+        <label htmlFor="firstName"> First name</label>
         <input
           value={firstname}
           onChange={(e) => setfirstName(e.target.value)}
-          type=" firstname"
+          type="text"
           name="firstName"
-          id="firstname"
-          placeholder="first Name"
+          id="firstName"
+          placeholder="Enter the first name"
         />
-        <label htmlFor="lastname"> Last name</label>
+        <label htmlFor="lastName"> Last name</label>
         <input
           value={lastname}
           onChange={(e) => setLastname(e.target.value)}
-          type=" lastname"
+          type="text"
           name="lastName"
-          id="lastname"
-          placeholder="last Name"
+          id="lastName"
+          placeholder="Enter the last name"
         />
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email:</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}

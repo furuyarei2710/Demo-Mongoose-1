@@ -114,7 +114,7 @@ export default function NavigationBar() {
                 <CreateWorkspaceFormComponent
                   handleCreateWorkspaceInfo={handleCreateWorkspaceInfo}
                   handlePreviewBackground={handlePreviewBackground}
-                  workspaceInfo={workspaceInfo}
+                  workspaceInfo={workspaces}
                   backgroundOfWorkspace={backgroundOfWorkspace}
                 />
               )}

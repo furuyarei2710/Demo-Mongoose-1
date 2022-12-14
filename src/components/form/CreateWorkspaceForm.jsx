@@ -12,7 +12,6 @@ import {
   WorkspaceNameLabelStyled,
 } from "../../assets/css/components/WorkspaceFormStyled";
 import { MdFormatColorFill } from "react-icons/md";
-import { TextButton } from "../button/TextButton";
 export default function CreateWorkspaceFormComponent({
   handleCreateWorkspaceInfo,
   handlePreviewBackground,
