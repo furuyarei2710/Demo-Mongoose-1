@@ -10,7 +10,7 @@ export default function Register() {
   return (
     <div className="auth-form-container">
       <h2>Sign up</h2>
-      <form action="/api/user" method="POST" className="register-form">
+      <form action="/api/users" method="POST" className="register-form">
         <label htmlFor="firstName"> First name</label>
         <input
           value={firstname}

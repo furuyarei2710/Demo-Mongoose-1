@@ -21,7 +21,7 @@ export default function CreateWorkspaceFormComponent({
   return (
     <CreateWorkspaceFormStyled
       className={"create-workspace-form"}
-      action="/api/workspace"
+      action="/api/workspaces"
       method="POST"
     >
       <CreateWorkspaceFormHeading className="create-workspace-form-heading">

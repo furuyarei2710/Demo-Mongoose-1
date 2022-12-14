@@ -6,7 +6,7 @@ export default function userDashboard({users}){
 
 export async function getServerSideProps(){
   try {
-    let response = await fetch("http://localhost:3000/api/user");
+    let response = await fetch("http://localhost:3000/api/users");
     let users = await response.json();
 
     return {

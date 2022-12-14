@@ -21,7 +21,7 @@ export default function CreateFormComponent({ heading, action }) {
     <div className="form-container">
       <h2 className="">{heading}</h2>
       <OperatorUserForm
-        action="/api/user"
+        action="/api/users"
         method="POST"
         className="user-crud-form"
         onSubmit={handleSubmit}

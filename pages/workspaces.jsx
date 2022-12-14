@@ -21,7 +21,7 @@ export default function workspaces({ workspaces }) {
 
 export async function getServerSideProps() {
   try {
-    let response = await fetch("http://localhost:3000/api/workspace");
+    let response = await fetch("http://localhost:3000/api/workspaces");
     let workspaces = await response.json();
 
     return {
