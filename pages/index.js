@@ -5,26 +5,12 @@ import { useEffect, useState } from "react";
 import { MdFormatColorFill } from "react-icons/md";
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useRouter } from "next/router";
-import Header from "../src/components/Header";
+import Header from "../src/components/NavigationBar";
 import { BrowserRouter, Routes } from "react-router-dom";
-import NavigationBar from "../src/components/Header";
+import NavigationBar from "../src/components/NavigationBar";
 
-export default function Home({workspaces}) {
+export default function Home() {
   return <><NavigationBar /></>
 }
 
-export async function getServerSideProps() {
-  try {
-    let response = await fetch("http://localhost:3000/api/workspace");
-    let workspaces = await response.json();
-    
-    return {
-      props: {
-        workspaces: JSON.parse(JSON.stringify(workspaces))
-      },
-    };
-  } catch (error) {
-    throw new Error(error);
-  }
-}
 

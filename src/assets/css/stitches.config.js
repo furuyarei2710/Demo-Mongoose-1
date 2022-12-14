@@ -66,9 +66,11 @@ export const {
       darkShades7: 'hsl(209, 34%, 30%)',
       darkShades8: 'hsl(211, 39%, 23%)',
       darkShades9: 'hsl(209, 61%, 16%)',
+      blueColor1: '#39ADDF',
       blackColor1: "#000",
       blackColor2: "#333",
       whiteColor1: "#fff",
+      whiteColor2: '#E9E9E9',
       lightShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
       darkShadow: '0 5px 15px rgba(0, 0, 0, 0.4)',
 

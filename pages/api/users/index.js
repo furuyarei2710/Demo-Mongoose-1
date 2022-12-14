@@ -12,8 +12,7 @@ export default async function createUser(req, res) {
         const client = await clientPromise;
         const db = client.db("users");
         
-        const users = await db.collection("users").find({}).toArray();
-            
+        const users = await db.collection("users").find({}).toArray();            
         res.json(users);
       } catch (error) {
         res.status(400).json({ success: false });
@@ -43,9 +42,12 @@ export default async function createUser(req, res) {
         // const db = client.db("users");
         // const newUser = req.body;
         // const updatedUser = await db.collection("users").replaceOne({_id: id, newUser})
-        // res.json(updatedUser)
-        // console.log(req.method)
+
+        // if(updatedUser){
+        //   res.redirect(307, '/usersInfo')
+        // }
         
+        // res.json(updatedUser)
       } catch (error) {
         res.status(400).json({ success: false });
       }

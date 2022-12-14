@@ -1,5 +1,6 @@
 import { styled, theme } from "../stitches.config";
 import { RiCloseLine, RiEdit2Line } from "react-icons/ri";
+import { AiFillDashboard } from 'react-icons/ai';
 import { TextButton } from "../../../components/button/TextButton";
 import { IconButton } from "../../../components/button/IconButton";
 import { BiCalendar } from "react-icons/bi";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CancelCreateToDoBtnStyled, CreateToDoActionsStyled, CreateToDoBtnStyled } from "../assets/css/components/ActionsStyled";
-import { CreateTodoFormInputStyled, CreateTodoFormStyled } from "../assets/css/components/Form";
+import { CancelCreateToDoBtnStyled, CreateToDoActionsStyled, CreateToDoBtnStyled } from "../../assets/css/components/ActionsStyled";
+import { CreateTodoFormInputStyled, CreateTodoFormStyled } from "../../assets/css/components/Form";
 
 export function ToDoForm({ handleCreateToDo, handleRemoveToDoInputForm }) {
   const [input, setInput] = useState("");
