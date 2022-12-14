@@ -19,7 +19,7 @@ export default function NavigationBar({ workspaces }) {
   };
   const handlePreviewBackground = (e) => {
     const file = e.target.files[0];
-    file.preview = URL.createObjectURL(file);
+    file.preview = URL.createObjectURL(file) || '';
     setBackgroundOfWorkspace(file);
   };
   const handleShowCreateWorkspaceForm = () => {
@@ -92,7 +92,7 @@ export default function NavigationBar({ workspaces }) {
 
 export async function getServerSideProps() {
   try {
-    let response = await fetch("http://localhost:3000/api/workspace/");
+    let response = await fetch("http://localhost:3000/api/workspace");
     let workspaces = await response.json();
     
     return {
