@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb'
+import mongoose from 'mongoose'
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid environment variable: "MONGODB_URI"')
@@ -28,6 +29,15 @@ if (process.env.NODE_ENV === 'development') {
   clientPromise = client.connect()
 
   console.log("Connected successfully")
+}
+
+const connectDB = async () => {
+  try {
+
+    mongoose.connect(MONGODB_URI)
+  } catch (error) {
+    return Promise.reject(errors)
+  }
 }
 
 // Export a module-scoped MongoClient promise. By doing this in a

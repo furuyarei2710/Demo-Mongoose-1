@@ -64,9 +64,6 @@ export default function Register() {
         Female
         <input type="submit" value={"Sign Up"} />
       </form>
-      <button className="link-btn" onClick={() => props.onFormSwitch("login")}>
-        Already have an account? Login here.
-      </button>
     </div>
   );
 }
