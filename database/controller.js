@@ -1,5 +1,4 @@
 import User from "../models/User";
-
  
  
 // get : http://localhost:3000/api/users
@@ -30,7 +29,7 @@ export async function getUser(req, res) {
   }
 }
  
-//  post : http://localhost:3000/api/users
+//  post : http://localhost:3000/api/user
 export async function createUser(req, res) {
   try {
     const formData = req.body;
@@ -44,7 +43,7 @@ export async function createUser(req, res) {
   }
 }
  
-//  put : http://localhost:3000/api/users
+//  put : http://localhost:3000/api/user
 export async function updateUser(req, res) {
   try {
     const {userID} = req.query;
@@ -60,7 +59,7 @@ export async function updateUser(req, res) {
   }
 }
  
-// delete : http://localhost:3000/api/users
+// delete : http://localhost:3000/api/user
 export async function deleteUser(req, res) {
   try{
     const {userID} = req.query;
