@@ -8,13 +8,9 @@ import { useRouter } from "next/router";
 import Header from "../src/components/NavigationBar";
 
 import NavigationBar from "../src/components/NavigationBar";
-import fetchUsers from "./fetching";
-// import users from './fetching'
 
 export default function Home() {
-  // return <><NavigationBar /></>
-  console.log(JSON.stringify(fetchUsers()))
-  return <p>{JSON.stringify(fetchUsers())}</p>
+  return <><NavigationBar /></>
 }
 
 

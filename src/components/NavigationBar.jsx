@@ -81,7 +81,9 @@ export default function NavigationBar() {
   const router = useRouter()
   const { workspaceID } = router.query
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (propertyName) => (event) => {
+    
+  };
 
   return (
     <>

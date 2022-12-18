@@ -50,7 +50,10 @@ export const UserBasedActionStyled = styled(TextButton, {
 		color: theme.colors.whiteColor1
 	},
 	'&.create-action': {
-		backgroundColor: theme.colors.greenColor2
+		backgroundColor: theme.colors.greenColor2,
+		position: 'absolute',
+		top: '20rem',
+		left: '70rem'
 	},
 	'&.update-action': {
 		backgroundColor: theme.colors.yellowColor1

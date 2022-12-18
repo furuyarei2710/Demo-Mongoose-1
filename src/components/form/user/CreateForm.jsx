@@ -1,6 +1,9 @@
 import Link from "next/link";
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import { CRUDUserFormInput, GenderOptionStyled, OperatorUserForm, OperatorUserFormAction, OperatorUserFormInput, OperatorUserFormLabel, UpdateUserForm, UpdateUserFormInput } from "../../../assets/css/components/CreateUserForm";
+import axios from 'axios';
+import { property } from "lodash";
+import { useRouter } from "next/router";
 
 const formReducer = (state, event) => {
   return {
@@ -8,27 +11,54 @@ const formReducer = (state, event) => {
     name: event.target.value,
   };
 };
-export default function CreateFormComponent({ heading, action }) {
-  const [formData, setFormData] = useReducer(formReducer, {});
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (Object.keys(formData).length === 0)
-      return console.log("Don't have form data");
-    console.log(formData);
+
+
+
+export default function CreateFormComponent({ user, heading, action }) {
+  const [gender, setGender] = useState("");
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email: "", password: "", gender: ""});
+  // const [id, setId] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const handleOnChangeFacts = (propertyName) => (event) => {
+    setFormData((formData) => ({
+      ...formData,
+      [propertyName]: event.target.value,
+    }));
   };
 
+  const handleCreateUserSubmit = async (e) => {
+    e.preventDefault()
+    console.log(formData)
+    try {
+      setIsLoading(true);
+      const obj  = await axios.post("http://localhost:3000/api/users",formData);
+      setUsers(users.concat(obj.data));
+      setIsLoading(false);
+      router.push('/usersInfo')
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/users').then(response => setUsers(response.data));
+  }, [users])
+  
   return (
     <div className="form-container">
       <h2 className="">{heading}</h2>
       <OperatorUserForm
-        action="/api/users"
-        method="POST"
+        // action="/api/users"
+        // method="POST"
         className="user-crud-form"
-        onSubmit={handleSubmit}
+        onSubmit={handleCreateUserSubmit}
       >
         <OperatorUserFormLabel className="user-crud-label" htmlFor="firstName">First name</OperatorUserFormLabel>
         <OperatorUserFormInput
-          onChange={setFormData}
+          onChange={handleOnChangeFacts("firstName")}
           type="text"
           name="firstName"
           id="firstName"
@@ -37,7 +67,7 @@ export default function CreateFormComponent({ heading, action }) {
         ></OperatorUserFormInput>
         <OperatorUserFormLabel className="user-crud-label" htmlFor="lastName">Last name</OperatorUserFormLabel>
         <OperatorUserFormInput
-          onChange={setFormData}
+          onChange={handleOnChangeFacts("lastName")}
           type="text"
           name="lastName"
           id="lastName"
@@ -46,7 +76,7 @@ export default function CreateFormComponent({ heading, action }) {
         ></OperatorUserFormInput>
         <OperatorUserFormLabel className="user-crud-label" htmlFor="email">Email:</OperatorUserFormLabel>
         <OperatorUserFormInput
-          onChange={setFormData}
+          onChange={handleOnChangeFacts("email")}
           type="email"
           placeholder="youremail@gmail.com"
           id="email"
@@ -55,7 +85,7 @@ export default function CreateFormComponent({ heading, action }) {
         ></OperatorUserFormInput>
         <OperatorUserFormLabel className="user-crud-label" htmlFor="password">Password</OperatorUserFormLabel>
         <OperatorUserFormInput
-          onChange={setFormData}
+          onChange={handleOnChangeFacts("password")}
           type="password"
           placeholder="********"
           id="password"
@@ -78,3 +108,4 @@ export default function CreateFormComponent({ heading, action }) {
     </div>
   );
 }
+

@@ -16,6 +16,9 @@ function UserFetching({
   return (
     <>
       <tr>
+        {/* <UserTableContentStyled className="user-table-content">
+          {user._id}
+        </UserTableContentStyled> */}
         <UserTableContentStyled className="user-table-content">
           {user.firstName}
         </UserTableContentStyled>
@@ -33,16 +36,9 @@ function UserFetching({
         </UserTableContentStyled>
         <UserTableActionStyled className="user-table-action">
           <UserBasedActionStyled
-            className="user-table-action-btn create-action"
-            text={"Add"}
-            handleOnClick={toggleCreateForm}
-          ></UserBasedActionStyled>
-        </UserTableActionStyled>
-        <UserTableActionStyled className="user-table-action">
-          <UserBasedActionStyled
             className="user-table-action-btn update-action"
             text={"Edit"}
-            handleOnClick={toggleUpdateForm}
+            handleOnClick={() => toggleUpdateForm(user)}
           ></UserBasedActionStyled>
         </UserTableActionStyled>
         <UserTableActionStyled className="user-table-action">
