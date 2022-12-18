@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import {
   UserBasedActionStyled,
@@ -13,6 +14,7 @@ function UserFetching({
   toggleUpdateForm,
   toggleDeleteForm,
 }) {
+  const router = useRouter();
   return (
     <>
       <tr>
@@ -38,7 +40,8 @@ function UserFetching({
           <UserBasedActionStyled
             className="user-table-action-btn update-action"
             text={"Edit"}
-            handleOnClick={() => toggleUpdateForm(user)}
+            // handleOnClick={() => toggleUpdateForm(user)}
+            handleOnClick={() => router.push(`/users/${user._id}`)}
           ></UserBasedActionStyled>
         </UserTableActionStyled>
         <UserTableActionStyled className="user-table-action">
