@@ -1,101 +1,64 @@
-// import { useRouter } from "next/router";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+// import axios from 'axios';
+// import { update } from "lodash";
+// import { getUsers } from ".";
+// import User from "../../../models/User";
 
-// const User = ({ users }) => {
-//   const router = useRouter();
-//   const { userID } = router.query;
-//   const specificUser = users.find((user) => user._id === userID);
-//   const [email, setEmail] = useState(specificUser.email);
-//   const [password, setPassword] = useState(specificUser.password);
-//   const [firstName, setFirstName] = useState(specificUser.firstName);
-//   const [lastName, setLastname] = useState(specificUser.lastName);
-//   const [gender, setGender] = useState(specificUser.gender);
-
-//   useEffect(() => {
-//     if (!router.isReady) return;
-//   }, [router.isReady]);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//   };
-
-//   return (
-//     <>
-//       <form action="/api/user" onSubmit={getFormData}>
-//         <label htmlFor="firstname"> First name</label>
-//         <input
-//           value={firstName}
-//           onChange={(e) => setFirstName(e.target.value)}
-//           name="firstName"
-//           id="firstname"
-//           placeholder="first Name"
-//         />
-//         <label htmlFor="lastname"> Last name</label>
-//         <input
-//           value={lastName}
-//           onChange={(e) => setLastname(e.target.value)}
-//           name="lastName"
-//           id="lastname"
-//           placeholder="last Name"
-//         />
-//         <label htmlFor="email">email</label>
-//         <input
-//           value={email}
-//           onChange={(e) => setEmail(e.target.value)}
-//           type="email"
-//           placeholder="youremail@gmail.com"
-//           name="email"
-//         />
-//         <label htmlFor="password">password</label>
-//         <input
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//           type="password"
-//           placeholder="********"
-//           name="password"
-//         />
-//         <label htmlFor="gender"> Gender</label>
-//         <input
-//           type="radio"
-//           name="gender"
-//           value={gender}
-//           onChange={(e) => setGender(e.target.value)}
-//         />{" "}
-//         Male
-//         <input
-//           type="radio"
-//           name="gender"
-//           value={gender}
-//           onChange={(e) => setGender(e.target.value)}
-//         />{" "}
-//         Female
-//         <input type="submit" value={"Edit"} />
-//       </form>
-//     </>
-//   );
-// };
-
-// export async function getStaticPaths() {
-//   const res = await fetch("http://localhost:3000/api/user");
-//   const users = await res.json();
-//   const paths = users.map((user) => ({ params: { userID: user._id } }));
-//   return {
-//     paths,
-//     fallback: true,
-//   };
+// export default function handler(req, res) {
+//   const data = getUserFact();
+//   const {userID} = req.query;
+//   res.status(200).json({ name: req.query.userID, data });
 // }
 
-// export async function getStaticProps() {
-//   const res = await fetch(`http://localhost:3000/api/user`);
-//   const user = await res.json();
+// // export default async function handler(req, res) {
+// //   const { method } = req;
 
-//   return {
-//     props: {
-//       users: JSON.parse(JSON.stringify(users)),
-//     },
-//   };
-// }
+// //   // await verifyUserSession({
+// //   //   req,
+// //   //   res,
+// //   //   getToken,
+// //   //   Session,
+// //   // });
 
-// export default User;
-// // update user
+// //   switch (method) {
+// //     case "GET":
+// //       await getUserFact(req, res);
+// //       break;
+
+// //     case "PATCH":
+// //       await updateUserFact(req, res);
+// //       break;
+
+// //     // case "DELETE":
+// //     //   await deletePhonebook(req, res);
+// //     //   break;
+
+// //     default:
+// //       break;
+// //   }
+// // }
+
+import { getUsers } from ".";
+import clientPromise from "../../../database/dbConnect";
+import User from "../../../models/User";
+// import { connectMongo } from "../../../database/dbConnect";
+
+// connectMongo();
+
+export default async function handler(req, res) {
+  const client = await clientPromise;
+  const db = client.db("users");
+  const { method } = req;
+  const { userID } = req.query;
+  const { firstName, lastName, email, password, gender } = req.body;
+  
+  if(req.method === 'PUT'){
+    const client = await clientPromise;
+    const db = client.db("users");
+    const data = {...req.body};
+    const newData = await db.collection("users").findOneAndUpdate({ _id: userID }, {...req.body});
+    // const users = JSON.parse(JSON.stringify(await db.collection("users").find({}).toArray()));
+    // const singleUser = users.find(user => user._id === userID);
+    // res.json(singleUser)
+
+  }
+}

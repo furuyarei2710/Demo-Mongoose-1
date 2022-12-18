@@ -6,7 +6,7 @@ import { MdFormatColorFill } from "react-icons/md";
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useRouter } from "next/router";
 import Header from "../src/components/NavigationBar";
-import { BrowserRouter, Routes } from "react-router-dom";
+
 import NavigationBar from "../src/components/NavigationBar";
 
 export default function Home() {

@@ -22,11 +22,8 @@ import {
   SeeMoreDetailWorkspaces,
   NavbarItemName,
 } from "../assets/css/components/WorkspaceOnNavBar";
-import {
-  CreateWorkspaceFormStyled,
-  WorkspaceBackgroundStyled,
-} from "../assets/css/components/WorkspaceFormStyled";
 import CreateWorkspaceFormComponent from "./form/CreateWorkspaceForm";
+import { useRouter } from "next/router";
 
 export default function NavigationBar() {
   const [isCreateWorkspace, setIsCreateWorkspace] = useState(false);
@@ -42,6 +39,10 @@ export default function NavigationBar() {
   const [backgroundOfWorkspace, setBackgroundOfWorkspace] = useState();
   const [loading, setLoading] = useState(false);
   const [workspaces, setWorkspaces] = useState(null);
+  // useEffect(() => {
+  //   if(!router.isReady) return;
+  // }, [router.isReady])
+  
   useEffect(() => {
     return () => {
       backgroundOfWorkspace &&
@@ -50,13 +51,14 @@ export default function NavigationBar() {
   }, [backgroundOfWorkspace]);
   useEffect(() => {
     setLoading(true);
-    fetch("api/workspace")
+    fetch("api/workspaces")
       .then((res) => res.json())
       .then((data) => {
         setWorkspaces(data);
         setLoading(false);
       });
   }, []);
+
 
   if (loading) return <p>Loading...</p>;
   if (!workspaces) return <p>No about workspaces</p>;
@@ -75,8 +77,13 @@ export default function NavigationBar() {
   const handleShowCreateWorkspaceForm = () => {
     setIsCreateWorkspace(!isCreateWorkspace);
   };
+  
+  const router = useRouter()
+  const { workspaceID } = router.query
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (propertyName) => (event) => {
+    
+  };
 
   return (
     <>
@@ -127,7 +134,7 @@ export default function NavigationBar() {
                     <WorkspaceLinkStyled
                       className="workspace-link"
                       key={workspace._id}
-                      href="#"
+                      href={`/${workspaceID}`}
                     >
                       <WorkspaceLogoStyled
                         className="workspace-logo"
